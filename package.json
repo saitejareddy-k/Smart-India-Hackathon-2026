@@ -1,0 +1,10 @@
+{
+  "name": "agridirect-professional-sih2026",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Professional, responsive AgriDirect farm-to-market prototype.",
+  "scripts": {
+    "start": "node server.js",
+    "verify": "node tools/verify_suite.js"
+  }
+}

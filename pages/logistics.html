@@ -1,0 +1,311 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="AgriDirect professional direct farm-to-market platform for farmers, FPOs, buyers and logistics operations."><meta name="theme-color" content="#062015"><title>Logistics & Route Optimization</title><link rel="stylesheet" href="../assets/css/common.css"></head><body>
+
+<aside class="sidebar" id="sidebar">
+<a class="brand" href="../index.html"><span class="brand-mark">AD</span><span><span class="brand-name">AgriDirect</span><span class="brand-sub">Farm to Market</span></span></a>
+<div class="sidebar-card"><strong>Farmer Access</strong><p>Voice-assisted tools, direct pricing and simple onboarding for producers and FPOs.</p><button class="btn btn-light" style="width:100%" onclick="openModal('assistantModal')">Open Assistant</button></div>
+<nav class="side-nav"><a class="nav-link" href="../index.html"><span class="nav-code">DB</span><span>Dashboard</span></a><a class="nav-link" href="marketplace.html"><span class="nav-code">MK</span><span>Marketplace</span><span class='nav-badge'>B2C/B2B</span></a><a class="nav-link" href="farmers.html"><span class="nav-code">FP</span><span>Farmers & FPOs</span></a><a class="nav-link" href="orders.html"><span class="nav-code">OR</span><span>Orders & Escrow</span></a><a class="nav-link" href="ai.html"><span class="nav-code">AI</span><span>AI Insights</span><span class='nav-badge'>AI</span></a><a class="nav-link active" href="logistics.html"><span class="nav-code">LG</span><span>Logistics & Route</span></a></nav>
+<div class="side-actions"><button onclick="dailyRates()">Hear today's rates</button><button onclick="openCart()">Open Cart <span class="cart-count">0</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleSidebar()"></div>
+
+<main class="main"><header class="topbar"><div><button class="btn mobile-toggle" onclick="toggleSidebar()">Menu</button><div class="eyebrow">AgriDirect Operations</div><h1>Logistics & Route Optimization</h1><p>Transparent farm-to-market commerce with quality, demand intelligence and coordinated logistics.</p></div><div class="top-actions"><button class="btn" onclick="dailyRates()">Rates</button><button class="btn" onclick="toggleAssistant()">Assistant</button><select class="lang" aria-label="Language" onchange="setGlobalLanguage(this.value)"><option value="en">English</option><option value="hi">Hindi</option></select><button class="btn btn-primary" onclick="openCart()">Cart <span class="cart-count">0</span></button></div></header>
+<section class="page-title"><div class="eyebrow">Cold-chain operations</div><h2>Logistics & Route Optimization</h2><p>Compare a clustered direct route with a fragmented multi-hop route. The map is a visual prototype; connect a real mapping/routing API for production routing.</p></section>
+<section class="card"><div class="route-controls"><button class="filter-chip active" id="aiRouteBtn" onclick="setRoute('ai')">Clustered AI route</button><button class="filter-chip" id="legacyBtn" onclick="setRoute('legacy')">Fragmented route</button><button class="btn btn-primary" onclick="optimize()">Run optimizer</button><button class="btn" onclick="openModal('dispatchModal')">Book vehicle</button></div><div class="route-kpis" style="margin-top:14px"><div class="route-kpi"><small>Distance</small><strong id="rDistance">168 km</strong></div><div class="route-kpi"><small>Transit</small><strong id="rTime">11.5 h</strong></div><div class="route-kpi"><small>Fuel estimate</small><strong id="rFuel">₹6,600</strong></div><div class="route-kpi"><small>Estimated spoilage</small><strong id="rSpoil">1.8%</strong></div></div></section>
+<section class="section grid-2"><div class="card"><div class="section-head"><div><h2>Route map</h2><p id="routeLabel">3 farm nodes → pre-cooling → distribution</p></div><span class="status status-green" id="routeStatus">Optimized</span></div><div class="map"><svg id="routeSvg" viewBox="0 0 900 360" role="img" aria-label="Route map"></svg></div></div><div class="card"><div class="section-head"><div><h2>Waypoints</h2><p>Operational sequence.</p></div><button class="btn" onclick="if (typeof speak === 'function') { speak('The optimized route groups farm pickups, moves produce through pre-cooling and then completes a direct distribution run.'); } else { showToast('Voice assistance is unavailable in this browser.'); }">Listen</button></div><div class="timeline" id="timeline"></div></div></section>
+<section class="section grid-2"><div class="card"><h2 style="font-size:16px">Cold-chain telemetry</h2><div class="grid-2" style="margin-top:12px"><div class="muted-box"><span class="sub">Temperature</span><strong id="temp" style="display:block;font-size:24px">4.2°C</strong></div><div class="muted-box"><span class="sub">Humidity</span><strong id="humidity" style="display:block;font-size:24px">88%</strong></div></div></div><div class="notice"><div class="mini">LIVE</div><div><strong>Telemetry simulation active</strong><p>Values fluctuate slightly to demonstrate a live dashboard. Real sensor data requires an authenticated IoT integration.</p></div></div></section>
+<div class="modal-backdrop" id="dispatchModal"><div class="modal"><div class="modal-head"><div><div class="eyebrow">Fleet dispatch</div><h2>Book a reefer vehicle</h2></div><button class="close" onclick="closeModal('dispatchModal')">X</button></div><form onsubmit="dispatch(event)"><div class="form-grid"><div class="field"><label>Pickup location</label><input class="input" name="pickup" required placeholder="Farm/FPO gate"></div><div class="field"><label>Vehicle</label><select class="select" name="fleet"><option>Reefer van · 2 MT</option><option>Reefer truck · 8 MT</option><option>Multi-temperature truck · 12 MT</option></select></div><div class="field"><label>Cargo quantity</label><input class="input" name="cargo" required placeholder="e.g. 1200 kg"></div><div class="field"><label>Pickup time</label><input class="input" type="datetime-local" name="time" required></div></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal('dispatchModal')">Cancel</button><button class="btn btn-primary">Create dispatch</button></div></form></div></div>
+</main>
+
+<div class="modal-backdrop" id="cartModal"><div class="modal"><div class="modal-head"><div><div class="eyebrow">Marketplace</div><h2>Your Cart</h2></div><button class="close" onclick="closeModal('cartModal')">X</button></div><div id="cartItems"></div><div class="section-head" style="margin-top:12px"><strong>Total</strong><strong id="cartTotal">₹0</strong></div><div class="modal-actions"><button class="btn" onclick="closeModal('cartModal')">Continue shopping</button><button class="btn btn-primary" onclick="checkoutCart()">Checkout with Escrow</button></div></div></div>
+<div class="modal-backdrop" id="assistantModal"><div class="modal"><div class="modal-head"><div><div class="eyebrow">Farmer Support</div><h2>AgriDirect Assistant</h2><p class="sub">Ask about prices, orders, onboarding or logistics.</p></div><button class="close" onclick="closeModal('assistantModal')">X</button></div><div id="assistantMessages"><div class="notice"><div><strong>How can I help?</strong><p>Try: “What is the tomato rate?” or “How does escrow work?”</p></div></div></div><form onsubmit="sendAssistant(event)" style="display:flex;gap:8px;margin-top:12px"><input id="assistantInput" class="input" placeholder="Type your question" aria-label="Assistant question"><button class="btn btn-primary">Send</button></form></div></div>
+<div class="toast" id="toast"></div>
+<script src="../assets/js/common.js"></script><script>
+"use strict";
+
+let route = "ai";
+
+const ROUTES = {
+    ai: {
+        distance: "168 km",
+        time: "11.5 h",
+        fuel: "₹6,600",
+        spoilage: "1.8%",
+        label: "3 farm nodes → pre-cooling → distribution",
+        status: "Optimized",
+        path: "M80 260 Q180 170 270 210 T450 180 Q600 140 800 110",
+        nodes: [
+            [80, 260, "Farm A"],
+            [270, 210, "Farm B"],
+            [450, 180, "Cooling"],
+            [800, 110, "Distribution"]
+        ],
+        color: "#34d399",
+        steps: [
+            ["Farm Gate A", "08:30", "1,200 kg tomatoes"],
+            ["Farm Gate B", "09:15", "800 kg onions"],
+            ["Pre-Cooling Hub", "10:00", "Rapid chilling and quality check"],
+            ["Cold Highway Transit", "11:30–16:30", "IoT monitored reefer run"],
+            ["Hyderabad Distribution", "19:30", "Direct dock delivery"]
+        ]
+    },
+
+    legacy: {
+        distance: "342 km",
+        time: "38.0 h",
+        fuel: "₹14,200",
+        spoilage: "26.4%",
+        label: "5 fragmented hops → city retail",
+        status: "Fragmented",
+        path: "M70 270 L200 80 L370 280 L540 90 L700 260 L820 120",
+        nodes: [
+            [70, 270, "Village"],
+            [200, 80, "Mandi"],
+            [370, 280, "Transfer"],
+            [540, 90, "Godown"],
+            [700, 260, "Retail"],
+            [820, 120, "Buyer"]
+        ],
+        color: "#f87171",
+        steps: [
+            ["Village Aggregator", "Day 1", "Unchilled collection"],
+            ["Primary Mandi", "Day 1", "Auction and waiting"],
+            ["Secondary Yard", "Day 2", "Reload and transfer"],
+            ["City Godown", "Day 3", "Additional handling stage"],
+            ["Retail Push", "Day 3", "Final-mile distribution"]
+        ]
+    }
+};
+
+function byId(id) {
+    return document.getElementById(id);
+}
+
+function setText(id, value) {
+    const element = byId(id);
+    if (element) {
+        element.textContent = value;
+    }
+}
+
+function setRoute(nextRoute) {
+    if (!ROUTES[nextRoute]) {
+        return;
+    }
+
+    route = nextRoute;
+
+    const data = ROUTES[route];
+
+    const aiButton = byId("aiRouteBtn");
+    const legacyButton = byId("legacyBtn");
+
+    if (aiButton) {
+        aiButton.classList.toggle("active", route === "ai");
+    }
+
+    if (legacyButton) {
+        legacyButton.classList.toggle("active", route === "legacy");
+    }
+
+    setText("rDistance", data.distance);
+    setText("rTime", data.time);
+    setText("rFuel", data.fuel);
+    setText("rSpoil", data.spoilage);
+    setText("routeLabel", data.label);
+    setText("routeStatus", data.status);
+
+    const spoilage = byId("rSpoil");
+
+    if (spoilage) {
+        spoilage.style.color =
+            route === "ai" ? "#047857" : "#dc2626";
+    }
+
+    const status = byId("routeStatus");
+
+    if (status) {
+        status.className =
+            "status " +
+            (route === "ai" ? "status-green" : "status-red");
+    }
+
+    drawRoute();
+    renderTimeline();
+}
+
+function drawRoute() {
+    const svg = byId("routeSvg");
+
+    if (!svg) {
+        return;
+    }
+
+    const data = ROUTES[route];
+
+    let markup = "";
+
+    markup += `
+        <rect
+            x="0"
+            y="0"
+            width="900"
+            height="360"
+            rx="18"
+            fill="#07150f"
+        ></rect>
+    `;
+
+    markup += `
+        <path
+            d="${data.path}"
+            fill="none"
+            stroke="${data.color}"
+            stroke-width="6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ${route === "legacy" ? 'stroke-dasharray="10 8"' : ""}
+        ></path>
+    `;
+
+    data.nodes.forEach((node, index) => {
+        const [x, y, label] = node;
+        const radius =
+            index === data.nodes.length - 1 ? 12 : 9;
+
+        markup += `
+            <circle
+                cx="${x}"
+                cy="${y}"
+                r="${radius}"
+                fill="${data.color}"
+                stroke="#ffffff"
+                stroke-width="3"
+            ></circle>
+
+            <text
+                x="${x}"
+                y="${y - 18}"
+                text-anchor="middle"
+                font-size="12"
+                font-weight="700"
+                fill="#ffffff"
+            >
+                ${label}
+            </text>
+        `;
+    });
+
+    svg.innerHTML = markup;
+}
+
+function renderTimeline() {
+    const container = byId("timeline");
+
+    if (!container) {
+        return;
+    }
+
+    const data = ROUTES[route];
+
+    container.innerHTML = data.steps
+        .map(step => `
+            <div class="timeline-item">
+                <div
+                    class="timeline-dot"
+                    style="border-color:${data.color}"
+                ></div>
+
+                <div class="timeline-body">
+                    <strong>${step[0]}</strong>
+                    <span>${step[1]}</span>
+                    <p>${step[2]}</p>
+                </div>
+            </div>
+        `)
+        .join("");
+}
+
+function optimize() {
+    setRoute("ai");
+
+    if (typeof showToast === "function") {
+        showToast(
+            "Route optimized: clustered farm pickups selected"
+        );
+    }
+}
+
+function dispatch(event) {
+    event.preventDefault();
+
+    const form = event.target;
+
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    closeModal("dispatchModal");
+
+    form.reset();
+
+    if (typeof showToast === "function") {
+        showToast(
+            "Dispatch request created successfully"
+        );
+    }
+}
+
+function startTelemetry() {
+    const update = () => {
+        const temperature = byId("temp");
+        const humidity = byId("humidity");
+
+        if (temperature) {
+            temperature.textContent =
+                (4 + Math.random() * 0.5).toFixed(1) + "°C";
+        }
+
+        if (humidity) {
+            humidity.textContent =
+                Math.round(86 + Math.random() * 5) + "%";
+        }
+    };
+
+    update();
+
+    window.setInterval(update, 3000);
+}
+
+function initializeLogisticsPage() {
+    setRoute("ai");
+    startTelemetry();
+
+    document
+        .querySelectorAll(".modal-backdrop")
+        .forEach(modal => {
+            modal.addEventListener("click", event => {
+                if (event.target === modal) {
+                    modal.classList.remove("open");
+                }
+            });
+        });
+
+    document.addEventListener("keydown", event => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        document
+            .querySelectorAll(".modal-backdrop.open")
+            .forEach(modal => {
+                modal.classList.remove("open");
+            });
+    });
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    initializeLogisticsPage
+);
+</script></body></html>

@@ -1,0 +1,1357 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        name="description"
+        content="AgriDirect farmer and FPO network for direct farm-to-market commerce."
+    >
+
+    <meta
+        name="theme-color"
+        content="#062015"
+    >
+
+    <title>Farmers & FPO Network | AgriDirect</title>
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/common.css"
+    >
+</head>
+
+<body>
+
+    <!-- Mobile Overlay -->
+    <div
+        class="mobile-overlay"
+        id="mobileOverlay"
+        onclick="toggleSidebar()"
+    ></div>
+
+
+    <!-- Sidebar -->
+    <aside
+        class="sidebar"
+        id="sidebar"
+        aria-label="Main navigation"
+    >
+
+        <a
+            class="brand"
+            href="../index.html"
+        >
+            <span class="brand-mark">AD</span>
+
+            <span>
+                <span class="brand-name">
+                    AgriDirect
+                </span>
+
+                <span class="brand-sub">
+                    Farm to Market
+                </span>
+            </span>
+        </a>
+
+
+        <div class="sidebar-card">
+
+            <strong>
+                Farmer Access
+            </strong>
+
+            <p>
+                Voice-assisted tools, direct pricing and simple
+                onboarding for producers and FPOs.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-light"
+                style="width:100%"
+                onclick="openModal('assistantModal')"
+            >
+                Open Assistant
+            </button>
+
+        </div>
+
+
+        <nav class="side-nav">
+
+            <a
+                class="nav-link"
+                href="../index.html"
+            >
+                <span class="nav-code">DB</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                class="nav-link"
+                href="marketplace.html"
+            >
+                <span class="nav-code">MK</span>
+                <span>Marketplace</span>
+                <span class="nav-badge">B2C/B2B</span>
+            </a>
+
+
+            <a
+                class="nav-link active"
+                href="farmers.html"
+                aria-current="page"
+            >
+                <span class="nav-code">FP</span>
+                <span>Farmers & FPOs</span>
+            </a>
+
+
+            <a
+                class="nav-link"
+                href="orders.html"
+            >
+                <span class="nav-code">OR</span>
+                <span>Orders & Escrow</span>
+            </a>
+
+
+            <a
+                class="nav-link"
+                href="ai.html"
+            >
+                <span class="nav-code">AI</span>
+                <span>AI Insights</span>
+                <span class="nav-badge">AI</span>
+            </a>
+
+
+            <a
+                class="nav-link"
+                href="logistics.html"
+            >
+                <span class="nav-code">LG</span>
+                <span>Logistics & Route</span>
+            </a>
+
+        </nav>
+
+
+        <div class="side-actions">
+
+            <button
+                type="button"
+                onclick="dailyRates()"
+            >
+                Hear today's rates
+            </button>
+
+            <button
+                type="button"
+                onclick="openCart()"
+            >
+                Open Cart
+                <span class="cart-count">0</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- Main -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="topbar">
+
+            <div>
+
+                <button
+                    type="button"
+                    class="btn mobile-toggle"
+                    onclick="toggleSidebar()"
+                    aria-label="Open navigation menu"
+                >
+                    Menu
+                </button>
+
+                <div class="eyebrow">
+                    AgriDirect Operations
+                </div>
+
+                <h1>
+                    Farmers & FPO Network
+                </h1>
+
+                <p>
+                    Transparent farm-to-market commerce with quality,
+                    demand intelligence and coordinated logistics.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                    type="button"
+                    class="btn"
+                    onclick="dailyRates()"
+                >
+                    Rates
+                </button>
+
+                <button
+                    type="button"
+                    class="btn"
+                    onclick="toggleAssistant()"
+                >
+                    Assistant
+                </button>
+
+                <select
+                    class="lang"
+                    aria-label="Select language"
+                    onchange="setGlobalLanguage(this.value)"
+                >
+                    <option value="en">
+                        English
+                    </option>
+
+                    <option value="hi">
+                        Hindi
+                    </option>
+                </select>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="openCart()"
+                >
+                    Cart
+                    <span class="cart-count">0</span>
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- Hero -->
+        <section class="hero farmer-hero">
+
+            <div>
+
+                <div
+                    class="eyebrow"
+                    style="color:#bfdbfe"
+                >
+                    Producer Network
+                </div>
+
+                <h2>
+                    Verified farmers and FPOs,
+                    built for direct trade.
+                </h2>
+
+                <p>
+                    AgriDirect connects verified farmers and Farmer
+                    Producer Organisations directly with buyers.
+                    Publish harvest lots, compare indicative prices,
+                    manage producer profiles and coordinate logistics
+                    from one platform.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-light"
+                        onclick="openModal('farmerModal')"
+                    >
+                        Onboard Farmer / FPO
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn"
+                        style="
+                            background:rgba(255,255,255,.08);
+                            color:#fff;
+                            border-color:rgba(255,255,255,.2)
+                        "
+                        onclick="startVoiceGuide()"
+                    >
+                        Voice Guide
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-metrics">
+
+                <div class="hero-metric">
+                    <strong>1,248</strong>
+                    <span>Producers</span>
+                </div>
+
+
+                <div class="hero-metric">
+                    <strong>96%</strong>
+                    <span>Profile completeness</span>
+                </div>
+
+
+                <div class="hero-metric">
+                    <strong>24h</strong>
+                    <span>Target verification</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Tools -->
+        <section class="section grid-3">
+
+            <!-- Price Advisor -->
+            <article class="card">
+
+                <div class="eyebrow">
+                    Fair-Price Tool
+                </div>
+
+                <h2
+                    style="
+                        font-size:17px;
+                        margin:5px 0
+                    "
+                >
+                    Indicative Price Advisor
+                </h2>
+
+                <p class="sub">
+                    Compare a sample mandi reference with
+                    the direct farm-gate price.
+                </p>
+
+
+                <div
+                    style="
+                        margin-top:12px;
+                        display:grid;
+                        gap:9px
+                    "
+                >
+
+                    <label
+                        for="advisorCrop"
+                        class="sub"
+                    >
+                        Select crop
+                    </label>
+
+                    <select
+                        id="advisorCrop"
+                        class="select"
+                    >
+                        <option value="28,16">
+                            Tomatoes
+                        </option>
+
+                        <option value="24,14">
+                            Onions
+                        </option>
+
+                        <option value="22,12">
+                            Potatoes
+                        </option>
+
+                        <option value="78,54">
+                            Basmati Rice
+                        </option>
+
+                        <option value="140,85">
+                            Mangoes
+                        </option>
+                    </select>
+
+
+                    <div class="muted-box">
+
+                        <span class="sub">
+                            Illustrative direct price
+                        </span>
+
+                        <strong
+                            id="advisorDirect"
+                            style="
+                                display:block;
+                                font-size:22px;
+                                color:#047857
+                            "
+                        >
+                            ₹28/kg
+                        </strong>
+
+                        <span
+                            id="advisorGain"
+                            class="kpi-trend"
+                        >
+                            75% above reference
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Checklist -->
+            <article class="card">
+
+                <div class="eyebrow">
+                    Onboarding Checklist
+                </div>
+
+                <h2
+                    style="
+                        font-size:17px;
+                        margin:5px 0
+                    "
+                >
+                    Producer Profile
+                </h2>
+
+
+                <div class="chain-list">
+
+                    <div class="chain-item">
+                        <span>
+                            Identity and contact
+                        </span>
+
+                        <strong>
+                            Required
+                        </strong>
+                    </div>
+
+
+                    <div class="chain-item">
+                        <span>
+                            Farm / FPO location
+                        </span>
+
+                        <strong>
+                            Required
+                        </strong>
+                    </div>
+
+
+                    <div class="chain-item">
+                        <span>
+                            Crop and harvest details
+                        </span>
+
+                        <strong>
+                            Required
+                        </strong>
+                    </div>
+
+
+                    <div class="chain-item">
+                        <span>
+                            Quality documentation
+                        </span>
+
+                        <strong>
+                            Optional
+                        </strong>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Access -->
+            <article class="card">
+
+                <div class="eyebrow">
+                    Accessible Support
+                </div>
+
+                <h2
+                    style="
+                        font-size:17px;
+                        margin:5px 0
+                    "
+                >
+                    Inclusive Workflow
+                </h2>
+
+                <p class="sub">
+                    Use the assistant for quick questions about
+                    prices, orders, onboarding and logistics.
+                    Browser voice playback is supported where
+                    available.
+                </p>
+
+
+                <button
+                    type="button"
+                    class="btn btn-light"
+                    style="margin-top:12px"
+                    onclick="toggleAssistant()"
+                >
+                    Open Support Assistant
+                </button>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- Producer Directory -->
+        <section class="section">
+
+            <div class="section-head">
+
+                <div>
+
+                    <h2>
+                        Producer Directory
+                    </h2>
+
+                    <p>
+                        Verified sample producer profiles
+                        for the AgriDirect prototype.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="openModal('farmerModal')"
+                >
+                    Add Producer
+                </button>
+
+            </div>
+
+
+            <div
+                class="grid-3"
+                id="farmerGrid"
+            ></div>
+
+        </section>
+
+
+
+        <!-- Onboarding Modal -->
+        <div
+            class="modal-backdrop"
+            id="farmerModal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="farmerModalTitle"
+        >
+
+            <div class="modal">
+
+                <div class="modal-head">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            Producer Onboarding
+                        </div>
+
+                        <h2 id="farmerModalTitle">
+                            Onboard a Farmer or FPO
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="close"
+                        onclick="closeModal('farmerModal')"
+                        aria-label="Close onboarding dialog"
+                    >
+                        X
+                    </button>
+
+                </div>
+
+
+                <form
+                    id="farmerForm"
+                    onsubmit="registerFarmer(event)"
+                    novalidate
+                >
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label for="farmerName">
+                                Name
+                            </label>
+
+                            <input
+                                id="farmerName"
+                                class="input"
+                                name="name"
+                                type="text"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="farmerType">
+                                Producer Type
+                            </label>
+
+                            <select
+                                id="farmerType"
+                                class="select"
+                                name="type"
+                                required
+                            >
+                                <option>
+                                    Individual Farmer
+                                </option>
+
+                                <option>
+                                    FPO
+                                </option>
+
+                                <option>
+                                    Cooperative
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="farmerPhone">
+                                Phone
+                            </label>
+
+                            <input
+                                id="farmerPhone"
+                                class="input"
+                                name="phone"
+                                type="tel"
+                                inputmode="tel"
+                                autocomplete="tel"
+                                pattern="[0-9 +()-]{8,}"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="farmerLocation">
+                                District / State
+                            </label>
+
+                            <input
+                                id="farmerLocation"
+                                class="input"
+                                name="location"
+                                type="text"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label for="farmerCrops">
+                                Primary Crops
+                            </label>
+
+                            <input
+                                id="farmerCrops"
+                                class="input"
+                                name="crops"
+                                type="text"
+                                placeholder="Example: Tomato, Onion, Paddy"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-actions">
+
+                        <button
+                            type="button"
+                            class="btn"
+                            onclick="closeModal('farmerModal')"
+                        >
+                            Cancel
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Submit Onboarding
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- Cart Modal -->
+    <div
+        class="modal-backdrop"
+        id="cartModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cartTitle"
+    >
+
+        <div class="modal">
+
+            <div class="modal-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Marketplace
+                    </div>
+
+                    <h2 id="cartTitle">
+                        Your Cart
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="close"
+                    onclick="closeModal('cartModal')"
+                    aria-label="Close cart"
+                >
+                    X
+                </button>
+
+            </div>
+
+
+            <div id="cartItems"></div>
+
+
+            <div
+                class="section-head"
+                style="margin-top:12px"
+            >
+
+                <strong>
+                    Total
+                </strong>
+
+                <strong id="cartTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn"
+                    onclick="closeModal('cartModal')"
+                >
+                    Continue Shopping
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="checkoutCart()"
+                >
+                    Checkout with Escrow
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Assistant Modal -->
+    <div
+        class="modal-backdrop"
+        id="assistantModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="assistantTitle"
+    >
+
+        <div class="modal">
+
+            <div class="modal-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Farmer Support
+                    </div>
+
+                    <h2 id="assistantTitle">
+                        AgriDirect Assistant
+                    </h2>
+
+                    <p class="sub">
+                        Ask about prices, orders,
+                        onboarding or logistics.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="close"
+                    onclick="closeModal('assistantModal')"
+                    aria-label="Close assistant"
+                >
+                    X
+                </button>
+
+            </div>
+
+
+            <div id="assistantMessages">
+
+                <div class="notice">
+
+                    <div class="mini">
+                        HELP
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            How can I help?
+                        </strong>
+
+                        <p>
+                            Try asking about crop prices,
+                            order tracking or farmer onboarding.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="assistantForm"
+                onsubmit="sendAssistant(event)"
+                style="
+                    display:flex;
+                    gap:8px;
+                    margin-top:12px
+                "
+            >
+
+                <input
+                    id="assistantInput"
+                    class="input"
+                    type="text"
+                    placeholder="Type your question"
+                    aria-label="Assistant question"
+                    autocomplete="off"
+                >
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Send
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Toast -->
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+
+    <!-- Shared JavaScript -->
+    <script src="../assets/js/common.js"></script>
+
+
+    <!-- Page JavaScript -->
+    <script>
+
+        "use strict";
+
+
+        const FARMERS = [
+
+            {
+                name: "Ramesh FPO",
+                location: "Kolar, Karnataka",
+                produce: "Tomatoes",
+                quantity: "1,200 kg",
+                status: "Verified producer"
+            },
+
+            {
+                name: "Sahyadri Farmers FPO",
+                location: "Nashik, Maharashtra",
+                produce: "Onions",
+                quantity: "3,500 kg",
+                status: "Verified producer"
+            },
+
+            {
+                name: "Krishna Valley Agro",
+                location: "Karnal, Haryana",
+                produce: "Basmati Rice",
+                quantity: "5,000 kg",
+                status: "Verified producer"
+            },
+
+            {
+                name: "Devgad Mango Producers",
+                location: "Ratnagiri, Maharashtra",
+                produce: "Mangoes",
+                quantity: "800 kg",
+                status: "Verified producer"
+            },
+
+            {
+                name: "Braj Bhoomi FPO",
+                location: "Agra, Uttar Pradesh",
+                produce: "Potatoes",
+                quantity: "4,200 kg",
+                status: "Verified producer"
+            },
+
+            {
+                name: "Warangal Spice FPO",
+                location: "Warangal, Telangana",
+                produce: "Turmeric",
+                quantity: "2,100 kg",
+                status: "Verified producer"
+            }
+
+        ];
+
+
+        function safeText(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function updateAdvisor() {
+
+            const select = document.getElementById(
+                "advisorCrop"
+            );
+
+            const direct = document.getElementById(
+                "advisorDirect"
+            );
+
+            const gain = document.getElementById(
+                "advisorGain"
+            );
+
+
+            if (!select || !direct || !gain) {
+                return;
+            }
+
+
+            const values = select.value
+                .split(",")
+                .map(Number);
+
+
+            const directPrice = values[0];
+            const referencePrice = values[1];
+
+
+            if (
+                !Number.isFinite(directPrice) ||
+                !Number.isFinite(referencePrice) ||
+                referencePrice <= 0
+            ) {
+                return;
+            }
+
+
+            const percentage = Math.round(
+                ((directPrice - referencePrice) /
+                    referencePrice) * 100
+            );
+
+
+            direct.textContent =
+                "₹" +
+                directPrice.toLocaleString("en-IN") +
+                "/kg";
+
+
+            gain.textContent =
+                percentage +
+                "% above reference";
+
+        }
+
+
+        function renderFarmers() {
+
+            const grid = document.getElementById(
+                "farmerGrid"
+            );
+
+
+            if (!grid) {
+                return;
+            }
+
+
+            grid.innerHTML = "";
+
+
+            FARMERS.forEach((farmer, index) => {
+
+                const article =
+                    document.createElement("article");
+
+
+                article.className = "card";
+
+
+                article.innerHTML = `
+
+                    <div
+                        style="
+                            display:flex;
+                            gap:12px;
+                            align-items:center
+                        "
+                    >
+
+                        <div class="kpi-icon">
+                            ${String(index + 1).padStart(2, "0")}
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                ${safeText(farmer.name)}
+                            </strong>
+
+                            <div class="sub">
+                                ${safeText(farmer.location)}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="muted-box"
+                        style="margin-top:12px"
+                    >
+
+                        <div class="product-name">
+                            ${safeText(farmer.produce)}
+                            ·
+                            ${safeText(farmer.quantity)}
+                        </div>
+
+                        <div class="sub">
+                            ${safeText(farmer.status)}
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn"
+                        style="
+                            width:100%;
+                            margin-top:10px
+                        "
+                        onclick="viewFarmer('${safeText(farmer.name)}')"
+                    >
+                        View Profile
+                    </button>
+
+                `;
+
+
+                grid.appendChild(article);
+
+            });
+
+        }
+
+
+        function viewFarmer(name) {
+
+            showToast(
+                "Producer profile: " + name
+            );
+
+        }
+
+
+        function startVoiceGuide() {
+
+            const message =
+                "Farmer onboarding is available on this page. " +
+                "Submit your details to create a producer onboarding request.";
+
+            if (
+                typeof speak === "function"
+            ) {
+                speak(message);
+            } else {
+                showToast(
+                    "Voice assistance is unavailable."
+                );
+            }
+
+        }
+
+
+        function registerFarmer(event) {
+
+            event.preventDefault();
+
+
+            const form = event.target;
+
+
+            if (!form.checkValidity()) {
+
+                form.reportValidity();
+
+                return;
+
+            }
+
+
+            const formData =
+                new FormData(form);
+
+
+            const farmerName =
+                String(formData.get("name") || "").trim();
+
+
+            if (!farmerName) {
+
+                showToast(
+                    "Please enter the producer name."
+                );
+
+                return;
+
+            }
+
+
+            closeModal("farmerModal");
+
+
+            form.reset();
+
+
+            showToast(
+                "Onboarding request submitted successfully."
+            );
+
+        }
+
+
+        function initFarmersPage() {
+
+            const advisor =
+                document.getElementById(
+                    "advisorCrop"
+                );
+
+
+            if (advisor) {
+
+                advisor.addEventListener(
+                    "change",
+                    updateAdvisor
+                );
+
+            }
+
+
+            updateAdvisor();
+
+            renderFarmers();
+
+
+            /*
+             * Close mobile navigation after
+             * selecting a navigation link.
+             */
+
+            document
+                .querySelectorAll(".nav-link")
+                .forEach(link => {
+
+                    link.addEventListener(
+                        "click",
+                        () => {
+
+                            const sidebar =
+                                document.getElementById(
+                                    "sidebar"
+                                );
+
+                            const overlay =
+                                document.getElementById(
+                                    "mobileOverlay"
+                                );
+
+
+                            if (sidebar) {
+                                sidebar.classList.remove(
+                                    "open"
+                                );
+                            }
+
+
+                            if (overlay) {
+                                overlay.classList.remove(
+                                    "open"
+                                );
+                            }
+
+                        }
+                    );
+
+                });
+
+
+            /*
+             * Escape key closes open modals.
+             */
+
+            document.addEventListener(
+                "keydown",
+                event => {
+
+                    if (event.key !== "Escape") {
+                        return;
+                    }
+
+
+                    document
+                        .querySelectorAll(
+                            ".modal-backdrop.open"
+                        )
+                        .forEach(modal => {
+
+                            modal.classList.remove(
+                                "open"
+                            );
+
+                        });
+
+                }
+            );
+
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initFarmersPage
+        );
+
+    </script>
+
+</body>
+</html>
